@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Generator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffe6f2; /* Light pink */
+      transition: background-color 0.5s ease;
+    }
+
+    #tweet-container {
+      background-color: #ffcce5; /* Lighter pink */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    button {
+      background-color: #ff66b2; /* Darker pink */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    button:hover {
+      background-color: #ff3385; /* Darker shade of pink on hover */
+    }
+
+    #quote-container {
+      margin-top: 20px;
+      text-align: center;
+      color: black;
+    }
+
+    #share-button {
+      display: none;
+      text-align: center;
+    }
+
+    /* Style for the logo */
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      width: 200px; /* Adjust the size as needed */
+      height: auto;
+    }
+    h6{
+      position:fixed ; 
+      bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Boss Beauties Logo -->
+  <img id="logo" src="BossBeauties_Logo_Black.png" alt="Boss Beauties Logo">
+
+  <div id="tweet-container">
+    <button onclick="generateRandomQuote()">Click Here To Be Empowered</button>
+    <button id="share-button" onclick="shareQuote()">Share to a BB <3 </button>
+    <div id="quote-container"></div>
+  </div>
+
+  <script>
+    function generateRandomQuote() {
+      const quotes = [
+                'Success is right around the corner. you got this BB!',
+          'Celebrate every mile, and make sure you get a photo taken with your well deserved medal',
+        'From one Boss Beauty to another, enjoy your ride because this, my dear, is your life unfolding. It’s incredible as well as incredibly messy. You are your own boss, so walk right through the door that you choose.',
+          'There is a time and place for everyone. Seize your opportunities and bust through those doors.',
+        'Know your worth. They’d be lucky to partner with you. You’re offering them an opportunity to work with you.',
+        'Learn to fall in love with yourself exactly as you are, BB.',
+        'The moment you feel like quitting could be the moment just before you succeed.',
+        
+
+
+        'I am enough.',
+        'I am confident.',
+        'I am powerful.',
+        'I am unstoppable.',
+        'I am motivated.',
+        'I am successful.',
+        'I am grateful.',
+        'I am creative.',
+        'I am inspiring.',
+
+        // Add more quotes as needed
+      ];
+
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const randomQuote = quotes[randomIndex];
+
+      const quoteContainer = document.getElementById('quote-container');
+      quoteContainer.innerHTML = `<p>${randomQuote}</p>`;
+
+      // Dynamically change background color
+      const randomColor = getRandomColor();
+      document.body.style.backgroundColor = randomColor;
+
+      // Show the share button
+      const shareButton = document.getElementById('share-button');
+      shareButton.style.display = 'inline-block';
+    }
+
+    function getRandomColor() {
+      const colors = ['#ffe6f2', '#ffcce5', '#ff66b2']; // Light pink, lighter pink, and darker pink
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function shareQuote() {
+      const quoteContainer = document.getElementById('quote-container');
+      const quoteText = quoteContainer.textContent || quoteContainer.innerText;
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Boss Beauties Quote',
+          text: quoteText,
+        })
+          .then(() => console.log('Shared successfully'))
+          .catch((error) => console.error('Error sharing:', error));
+      } else {
+        alert('Web Share API not supported. You can manually copy the quote.');
+      }
+    }
+  </script>
+
+
+<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+ 
+<h6>&#9825 Coded with Love by 2024 Boss Beauties Sprinterns  &#9825
+</h6>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
